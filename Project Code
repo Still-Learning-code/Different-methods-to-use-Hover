@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change text color on hover</title>
+  </head> 
+  <body>
+   <div> Hover Below</div>
+<p data-item='Welcome'>WELCOME</p>
+
+<section>
+  <nav>
+    <ul class="menuItems">
+      <li><a href='#' data-item='Home'>Home</a></li>
+      <li><a href='#' data-item='About'>About</a></li>
+      <li><a href='#' data-item='Projects'>Projects</a></li>
+      <li><a href='#' data-item='Blog'>Blog</a></li>
+      <li><a href='#' data-item='Contact'>Contact</a></li>
+    </ul>
+  </nav>
+  </section>
+
+  </body>
+</html>
+
+CSS
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  font-family: Hack, monospace;
+}
+
+div {
+  color: black;
+  text-align: center;
+  font-size: 20px;
+}
+
+p {
+  margin: 16px;
+  font-size: 96px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 1s ease-in-out;
+  position: relative;
+
+
+  &::before {
+    content: attr(data-item);
+    transition: all 1s ease-in-out;
+    color: #4169e1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    overflow: hidden;
+  }
+  
+ &:hover {
+    &::before {
+      width: 100%;
+    }
+  }
+}
+nav {
+  margin: 25px;
+  background: whitesmoke;
+  padding: 16px;
+  .menuItems {
+    list-style: none;
+    display: flex;
+
+    li {
+      margin: 50px;
+      
+       a {
+        text-decoration: none;
+        color: #7a7a7a;
+        font-size: 24px;
+        font-weight: 400;
+        transition: all 1s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
+
+        &::before {
+          content: attr(data-item);
+          transition: 1s;
+          color: #00008b;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 0;
+          overflow: hidden;
+        }
+
+          &:hover {
+          &::before {
+            width: 100%;
+            transition: all 1s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}
